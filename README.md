@@ -74,6 +74,14 @@ webp/
 
 ---
 
-## 📄 Lisans
+## � Lighthouse Erişilebilirlik Puanı
+
+![Lighthouse Accessibility Score](screenshots/lighthouse-score.png)
+
+> Lighthouse Accessibility puanı: **100 / 100**
+
+---
+
+## �📄 Lisans
 
 Bu proje eğitim amaçlı geliştirilmiştir.
