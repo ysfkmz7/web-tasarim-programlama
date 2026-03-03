@@ -74,7 +74,7 @@ webp/
 
 ---
 
-## � Lighthouse Erişilebilirlik Puanı
+## 🔦 Lighthouse Erişilebilirlik Puanı
 
 ![Lighthouse Accessibility Score](screenshots/lighthouse-score.png)
 
@@ -82,6 +82,19 @@ webp/
 
 ---
 
-## �📄 Lisans
+## 📱 Responsive Ekran Görüntüleri
+
+### Mobil (375px)
+![Mobil Görünüm](screenshots/screenshot-mobile.png)
+
+### Tablet (768px)
+![Tablet Görünüm](screenshots/screenshot-tablet.png)
+
+### Masaüstü (1280px)
+![Masaüstü Görünüm](screenshots/screenshot-desktop.png)
+
+---
+
+## 📄 Lisans
 
 Bu proje eğitim amaçlı geliştirilmiştir.
