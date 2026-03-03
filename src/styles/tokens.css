@@ -1,0 +1,142 @@
+/* ═══════════════════════════════════════════════════════════════
+   Design Tokens — Siber Güvenlik & Yapay Zeka Teması
+   Yusuf Kaymaz | Fırat Üniversitesi Yazılım Mühendisliği
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ──────────────────────────────────────────
+     Renk Paleti — Koyu Lacivert / Mor Tonları
+     ────────────────────────────────────────── */
+
+  /* Arka planlar */
+  --color-bg:          #080c18;   /* Ana arka plan — derin gece mavisi */
+  --color-surface:     #0d1225;   /* Kart / panel yüzeyi             */
+  --color-surface-2:   #131a30;   /* İkincil yüzey (hover vb.)       */
+  --color-surface-3:   #1c2540;   /* Üçüncül yüzey / border-glass    */
+
+  /* Birincil vurgu — Elektrik Mavisi */
+  --color-primary:        #3b82f6;
+  --color-primary-light:  #60a5fa;
+  --color-primary-dark:   #2563eb;
+  --color-primary-glow:   rgba(59, 130, 246, 0.25);
+
+  /* İkincil vurgu — Siber Mor */
+  --color-accent:        #a855f7;
+  --color-accent-light:  #c084fc;
+  --color-accent-dark:   #7c3aed;
+  --color-accent-glow:   rgba(168, 85, 247, 0.20);
+
+  /* Neon / Sinyal rengi */
+  --color-neon:       #00d4ff;
+  --color-neon-glow:  rgba(0, 212, 255, 0.20);
+
+  /* Metin */
+  --color-text:         #e2e8f0;   /* Birincil metin  */
+  --color-text-muted:   #94a3b8;   /* İkincil / açıklama */
+  --color-text-subtle:  #64748b;   /* Soluk metin     */
+  --color-text-inverse: #080c18;   /* Koyu buton üzeri metin */
+
+  /* Kenarlık ve Bölücü */
+  --color-border:        rgba(59, 130, 246, 0.18);
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+
+  /* Sistem Renkleri */
+  --color-error:         #f87171;
+  --color-error-bg:      rgba(248, 113, 113, 0.10);
+  --color-success:       #4ade80;
+  --color-success-bg:    rgba(74, 222, 128, 0.10);
+  --color-success-border:rgba(74, 222, 128, 0.30);
+
+  /* Özel Gradyanlar */
+  --gradient-header: linear-gradient(135deg, #0d1225 0%, #0f0c29 50%, #1a0533 100%);
+  --gradient-card:   linear-gradient(135deg, #0d1225, #131a30);
+  --gradient-accent: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+
+  /* ──────────────────────────────────────────
+     Spacing — 4px Tabanlı Sistem
+     ────────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+
+  /* ──────────────────────────────────────────
+     Border Radius
+     ────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ──────────────────────────────────────────
+     Gölge / Derinlik
+     ────────────────────────────────────────── */
+  --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow-primary: 0 0 20px var(--color-primary-glow);
+  --shadow-glow-accent:  0 0 20px var(--color-accent-glow);
+
+  /* ──────────────────────────────────────────
+     Geçiş / Animasyon
+     ────────────────────────────────────────── */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.25s ease;
+  --transition-slow:   0.4s ease;
+
+  /* ──────────────────────────────────────────
+     Z-index Katmanları
+     ────────────────────────────────────────── */
+  --z-base:   1;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+
+  /* ──────────────────────────────────────────
+     Fluid Typography — clamp() ile Akıcı Boyutlar
+     Formül: clamp(min, tercih, max)
+     tercih = sabit + görüntü genişliğine bağlı değer
+     ────────────────────────────────────────── */
+
+  /* ~12.8px → ~14px */
+  --text-sm:   clamp(0.8rem,   0.75rem  + 0.25vw,  0.875rem);
+
+  /* ~16px → ~18px */
+  --text-base: clamp(1rem,     0.925rem + 0.375vw,  1.125rem);
+
+  /* ~18px → ~20px */
+  --text-lg:   clamp(1.125rem, 1.025rem + 0.5vw,    1.25rem);
+
+  /* ~20px → ~24px */
+  --text-xl:   clamp(1.25rem,  1.1rem   + 0.75vw,   1.5rem);
+
+  /* ~24px → ~32px */
+  --text-2xl:  clamp(1.5rem,   1.25rem  + 1.25vw,   2rem);
+
+  /* ~32px → ~48px */
+  --text-3xl:  clamp(2rem,     1.5rem   + 2.5vw,    3rem);
+
+  /* ──────────────────────────────────────────
+     Font Weight
+     ────────────────────────────────────────── */
+  --fw-normal:    400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+
+  /* ──────────────────────────────────────────
+     Layout
+     ────────────────────────────────────────── */
+  --container-max: 960px;
+  --container-pad: var(--space-5);
+}
