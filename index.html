@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Yusuf Kaymaz - Fırat Üniversitesi Yazılım Mühendisliği öğrencisi kişisel portfolyo sitesi." />
     <title>Yusuf Kaymaz | Kişisel Portfolyo</title>
+    <!-- Dark mode: Blokeli inline script — React render'dan ÖNCE sınıfı uygular (flash yok) -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        // Tercih yoksa ya da 'dark' ise dark modu aç (varsayılan: dark)
+        if (stored !== 'light') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
