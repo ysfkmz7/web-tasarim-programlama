@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import { useEffect } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Card from "../components/Card";
@@ -21,27 +20,29 @@ function useDarkMode() {
       localStorage.setItem("theme", "light");
     }
   }, [dark]);
-  return { dark, toggleDark: () => setDark((d) => !d) };
+  return { dark, toggle: () => setDark((d) => !d) };
 }
 
 /* ─────────────────────────────────────────────
-   Bölüm Başlığı Yardımcı Bileşeni
+   Bölüm Başlığı
    ───────────────────────────────────────────── */
 function Section({
   title,
-  description,
+  sub,
   children,
 }: {
   title: string;
-  description?: string;
-  children: React.ReactNode;
+  sub?: string;
+  children: ReactNode;
 }) {
   return (
-    <section className="space-y-6">
-      <div className="border-b border-slate-300 dark:border-border-subtle pb-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-text">{title}</h2>
-        {description && (
-          <p className="text-sm text-slate-500 dark:text-text-muted mt-1">{description}</p>
+    <section className="space-y-5">
+      <div className="pb-3 border-b border-slate-200 dark:border-border-subtle">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800 dark:text-text">
+          {title}
+        </h2>
+        {sub && (
+          <p className="mt-1 text-sm text-slate-500 dark:text-text-muted">{sub}</p>
         )}
       </div>
       {children}
@@ -50,29 +51,23 @@ function Section({
 }
 
 /* ─────────────────────────────────────────────
-   Demo Kutusu — bileşeni net göstermek için
+   Demo Kutusu
    ───────────────────────────────────────────── */
-function DemoBox({
+function Box({
   label,
   children,
   row = false,
 }: {
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
   row?: boolean;
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 dark:border-border-subtle bg-white dark:bg-surface p-5 space-y-3">
-      <p className="text-xs font-mono text-slate-400 dark:text-text-subtle uppercase tracking-widest">
+    <div className="rounded-xl border border-slate-200 dark:border-border-subtle bg-white dark:bg-surface p-4 sm:p-5 space-y-3">
+      <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-slate-400 dark:text-text-subtle">
         {label}
       </p>
-      <div
-        className={
-          row
-            ? "flex flex-wrap items-center gap-3"
-            : "flex flex-col gap-3"
-        }
-      >
+      <div className={row ? "flex flex-wrap items-center gap-3" : "flex flex-col gap-3"}>
         {children}
       </div>
     </div>
@@ -83,18 +78,18 @@ function DemoBox({
    UI Kit Sayfası
    ═══════════════════════════════════════════════════════════════ */
 export default function UIKit() {
-  const { dark, toggleDark } = useDarkMode();
+  const { dark, toggle } = useDarkMode();
   const [inputValue, setInputValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 dark:bg-gray-950 dark:text-gray-100 font-sans">
+    <div className="min-h-screen bg-slate-100 text-slate-900 dark:bg-gray-950 dark:text-gray-100 font-sans transition-colors duration-300">
 
       {/* ── Dark Mode Toggle — sağ üst ── */}
       <div className="fixed top-4 right-4 z-50">
         <button
           type="button"
-          onClick={toggleDark}
+          onClick={toggle}
           aria-label={dark ? "Açık moda geç" : "Karanlık moda geç"}
           className="p-2.5 rounded-full border border-slate-300 dark:border-border
                      bg-white dark:bg-surface-2 shadow-md
@@ -155,22 +150,22 @@ export default function UIKit() {
             ════════════════════════════════ */}
         <Section
           title="Button"
-          description="variant (primary, secondary, danger, ghost) ve size (sm, md, lg) proplarını destekler. Disabled state ve focus:ring erişilebilirliği içerir."
+          sub="variant (primary, secondary, danger, ghost) ve size (sm, md, lg) proplarını destekler. Disabled state ve focus:ring erişilebilirliği içerir."
         >
           {/* Variant'lar — mobilde alt alta, sm'den itibaren yan yana */}
-          <DemoBox label="Variants (primary / secondary / danger / ghost)" row>
+          <Box label="Variants (primary / secondary / danger / ghost)" row>
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="danger">Danger</Button>
             <Button variant="ghost">Ghost</Button>
-          </DemoBox>
+          </Box>
 
           {/* Sizes — sm:md:lg breakpoint demo */}
-          <DemoBox label="Sizes (sm / md / lg)" row>
+          <Box label="Sizes (sm / md / lg)" row>
             <Button size="sm" className="sm:text-xs md:text-sm lg:text-base">sm — Küçük</Button>
             <Button size="md">md — Orta</Button>
             <Button size="lg">lg — Büyük</Button>
-          </DemoBox>
+          </Box>
 
           {/* Disabled — 2 sütun sm'den itibaren, lg'de 4 sütun */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -181,7 +176,7 @@ export default function UIKit() {
           </div>
 
           {/* İkon ile */}
-          <DemoBox label="With Icons" row>
+          <Box label="With Icons" row>
             <Button variant="primary">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -200,7 +195,7 @@ export default function UIKit() {
               </svg>
               Sil
             </Button>
-          </DemoBox>
+          </Box>
         </Section>
 
         {/* ════════════════════════════════
@@ -208,20 +203,20 @@ export default function UIKit() {
             ════════════════════════════════ */}
         <Section
           title="Input"
-          description="error, helpText ve disabled proplarını destekler. aria-describedby ve role='alert' ile tam erişilebilirlik sağlar."
+          sub="error, helpText ve disabled proplarını destekler. aria-describedby ve role='alert' ile tam erişilebilirlik sağlar."
         >
           {/* 4 Input varyantı — mobilde tek sütun, md'de 2 sütun */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <DemoBox label="1 — Normal Input">
+            <Box label="1 — Normal Input">
               <Input
                 label="Ad Soyad"
                 placeholder="Adınızı giriniz"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
               />
-            </DemoBox>
+            </Box>
 
-            <DemoBox label="2 — Error State">
+            <Box label="2 — Error State">
               <Input
                 label="E-posta Adresi"
                 type="email"
@@ -230,25 +225,25 @@ export default function UIKit() {
                 onChange={(e) => setEmailValue(e.target.value)}
                 error="Geçerli bir e-posta adresi giriniz."
               />
-            </DemoBox>
+            </Box>
 
-            <DemoBox label="3 — Help Text">
+            <Box label="3 — Help Text">
               <Input
                 label="Şifre"
                 type="password"
                 placeholder="••••••••"
                 helpText="En az 8 karakter, bir büyük harf ve bir rakam içermelidir."
               />
-            </DemoBox>
+            </Box>
 
-            <DemoBox label="4 — Disabled State">
+            <Box label="4 — Disabled State">
               <Input
                 label="Kullanıcı Adı"
                 placeholder="Kullanıcı adınız"
                 defaultValue="yusuf.kaymaz"
                 disabled
               />
-            </DemoBox>
+            </Box>
           </div>
         </Section>
 
@@ -257,7 +252,7 @@ export default function UIKit() {
             ════════════════════════════════ */}
         <Section
           title="Card"
-          description="elevated, outlined ve filled varyantlarını destekler. title, image, footer opsiyonel prop'lar içerir."
+          sub="elevated, outlined ve filled varyantlarını destekler. title, image, footer opsiyonel prop'lar içerir."
         >
           {/* 3 Card varyantı — mobilde 1, sm'de 2, md'de 3 sütun */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -304,7 +299,7 @@ export default function UIKit() {
           </div>
 
           {/* Görselli Kart */}
-          <DemoBox label="Card with Image">
+          <Box label="Card with Image">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Card
                 variant="elevated"
@@ -336,7 +331,7 @@ export default function UIKit() {
                 Piezo sensörlü Arduino tabanlı akıllı kilit sistemi.
               </Card>
             </div>
-          </DemoBox>
+          </Box>
         </Section>
 
         {/* ════════════════════════════════
@@ -344,7 +339,7 @@ export default function UIKit() {
             ════════════════════════════════ */}
         <Section
           title="Alert"
-          description="info, success, warning ve error varyantlarını destekler. Dismissible (kapatılabilir) prop ile aria-label='Kapat' butonu içerir."
+          sub="info, success, warning ve error varyantlarını destekler. Dismissible (kapatılabilir) prop ile aria-label='Kapat' butonu içerir."
         >
           {/* 4 Varyant */}
           <div className="flex flex-col gap-3">
@@ -367,7 +362,7 @@ export default function UIKit() {
           </div>
 
           {/* Kapatılabilir (Dismissible) */}
-          <DemoBox label="Dismissible Variants">
+          <Box label="Dismissible Variants">
             <Alert variant="info" title="Kapatılabilir Bilgi" dismissible>
               Bu uyarı sağ üstteki X butonuna tıklanarak kapatılabilir.
             </Alert>
@@ -382,7 +377,7 @@ export default function UIKit() {
             <Alert variant="error" title="Kritik Hata" dismissible>
               Veritabanı bağlantısı kesildi. Sistem yöneticisine başvurun.
             </Alert>
-          </DemoBox>
+          </Box>
         </Section>
 
         {/* ════════════════════════════════
@@ -390,7 +385,7 @@ export default function UIKit() {
             ════════════════════════════════ */}
         <Section
           title="Dark Mode"
-          description="Tüm bileşenler dark: prefix Tailwind sınıflarıyla sistem temasına tam uyumluluk sağlar."
+          sub="Tüm bileşenler dark: prefix Tailwind sınıflarıyla sistem temasına tam uyumluluk sağlar."
         >
           <Alert variant="info">
             Sayfanın sağ üst köşesindeki toggledan ya da portföy ana sayfasındaki
@@ -399,19 +394,19 @@ export default function UIKit() {
           </Alert>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
-            <DemoBox label="Buttons — sm breakpoint" row>
+            <Box label="Buttons — sm breakpoint" row>
               <Button variant="primary"   size="sm">Primary</Button>
               <Button variant="secondary" size="sm">Secondary</Button>
               <Button variant="ghost"     size="sm">Ghost</Button>
-            </DemoBox>
-            <DemoBox label="Input — md breakpoint">
+            </Box>
+            <Box label="Input — md breakpoint">
               <Input label="Dark Mode Input" placeholder="Yazar gibi..." />
-            </DemoBox>
-            <DemoBox label="Card — lg breakpoint">
+            </Box>
+            <Box label="Card — lg breakpoint">
               <Card variant="filled" title="Responsive Card">
                 lg breakpoint'te görünen üçüncü sütun. Mobile-first: önce tek sütun.
               </Card>
-            </DemoBox>
+            </Box>
           </div>
         </Section>
 
