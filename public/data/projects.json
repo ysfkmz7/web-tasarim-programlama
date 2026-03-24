@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1",
+    "title": "Kişisel Portföy V1",
+    "description": "React ve Tailwind CSS kullanarak geliştirdiğim ilk portföy sitem. Responsive tasarım ve Tailwind CSS'in gücünü gösteren örnek.",
+    "category": "frontend",
+    "technologies": ["React", "Tailwind CSS", "TypeScript"],
+    "year": 2023,
+    "githubUrl": "https://github.com/ysfkmz/portfolio-v1",
+    "liveUrl": "https://ysfkmz-portfolio.vercel.app"
+  },
+  {
+    "id": "2",
+    "title": "E-Ticaret API",
+    "description": "Node.js ve Express ile geliştirilmiş kapsamlı bir e-ticaret arka uç servisi. JWT authentication, MongoDB veritabanı, RESTful API tasarımı.",
+    "category": "backend",
+    "technologies": ["Node.js", "Express", "MongoDB", "JWT"],
+    "year": 2022,
+    "githubUrl": "https://github.com/ysfkmz/ecommerce-api"
+  },
+  {
+    "id": "3",
+    "title": "Görev Yöneticisi Fullstack App",
+    "description": "Kullanıcıların görevlerini yönetebildiği, MERN stack ile geliştirilmiş tam yığın (fullstack) uygulama. CRUD operasyonları, state yönetimi.",
+    "category": "fullstack",
+    "technologies": ["MongoDB", "Express", "React", "Node.js"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/task-manager",
+    "liveUrl": "https://task-manager-demo.vercel.app"
+  },
+  {
+    "id": "4",
+    "title": "Hava Durumu Dashboard",
+    "description": "Açık hava durumu API'si kullanarak anlık hava durumunu gösteren arayüz. Dinamik görseller, lokasyon tabanlı hava tahmini.",
+    "category": "frontend",
+    "technologies": ["React", "Axios", "CSS Modules", "OpenWeather API"],
+    "year": 2023,
+    "githubUrl": "https://github.com/ysfkmz/weather-dashboard",
+    "liveUrl": "https://weather-dashboard-demo.vercel.app"
+  },
+  {
+    "id": "5",
+    "title": "Sohbet Uygulaması WebSocket",
+    "description": "Gerçek zamanlı mesajlaşma sağlayan, Socket.io destekli backend servisi. Kullanıcı kimliği doğrulama, mesaj geçmişi, aktif kullanıcılar.",
+    "category": "backend",
+    "technologies": ["Node.js", "Socket.io", "Redis", "Express"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/chat-backend"
+  },
+  {
+    "id": "6",
+    "title": "İçerik Yönetim Sistemi (CMS)",
+    "description": "Hareketle blog yazıları, sayfalar ve medya dosyaları yönetebilen kapsamlı CMS platformu. Admin paneli, makale yayınlama, kategori yönetimi.",
+    "category": "fullstack",
+    "technologies": ["React", "Node.js", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/cms-platform",
+    "liveUrl": "https://cms-platform-demo.vercel.app"
+  },
+  {
+    "id": "7",
+    "title": "Sosyal Medya Analitics Dashboard",
+    "description": "Instagram, Twitter gibi platformlardan veri çekerek analiz ve raporlama yapan dashboard. Grafik görselleme, trend analizi.",
+    "category": "frontend",
+    "technologies": ["React", "Chart.js", "Tailwind CSS", "Axios"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/social-analytics"
+  },
+  {
+    "id": "8",
+    "title": "Restoran Sipariş Sistemi",
+    "description": "Restoranlar için menü yönetimi, sipariş alma ve teslim takibi yapan sistem. QR kodla hızlı sipariş, gerçek zamanlı durum güncellemesi.",
+    "category": "fullstack",
+    "technologies": ["React", "Node.js", "MongoDB", "Stripe", "Socket.io"],
+    "year": 2023,
+    "githubUrl": "https://github.com/ysfkmz/restaurant-orders"
+  },
+  {
+    "id": "9",
+    "title": "Machine Learning Model API",
+    "description": "Python ile yazılmış makine öğrenmesi modellerini sunan REST API. Görüntü sınıflandırma, doğal dil işleme, veri analitikleri.",
+    "category": "backend",
+    "technologies": ["Python", "FastAPI", "TensorFlow", "Scikit-learn"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/ml-api"
+  },
+  {
+    "id": "10",
+    "title": "Eğitim Platformu",
+    "description": "Çevrimiçi kurslar yapan, video dersleri, quizler ve sertifikalar sunan eğitim platformu. Kullanıcı progress takibi, payment integration.",
+    "category": "fullstack",
+    "technologies": ["React", "Node.js", "MongoDB", "Stripe", "YouTube API"],
+    "year": 2024,
+    "githubUrl": "https://github.com/ysfkmz/learning-platform",
+    "liveUrl": "https://learning-platform-demo.vercel.app"
+  }
+]
+

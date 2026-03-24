@@ -4,6 +4,7 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import Card from "./components/Card";
 import Alert from "./components/Alert";
+import { ProjectsPage } from "./pages/ProjectsPage";
 
 /* ─────────────────────────────────────────────
    Tip Tanımları
@@ -33,21 +34,6 @@ const NAV_LINKS = [
   { href: "#projects", label: "Projeler"  },
   { href: "#contact",  label: "İletişim"  },
   { href: "/ui-kit",   label: "UI Kit"    },
-];
-
-const PROJECTS = [
-  {
-    title: "Kripto Sinyal Telegram Botu",
-    desc:  "Go dili ve çeşitli API'ler ile geliştirilmiş haber bazlı otomasyon botu. Kripto piyasalarındaki anlık haberleri takip ederek Telegram üzerinden sinyal gönderir.",
-    tags:  ["Go", "API", "Telegram"],
-    image: "https://api.dicebear.com/9.x/bottts/svg?seed=crypto&backgroundColor=0d1225",
-  },
-  {
-    title: "Secret Knock Lock",
-    desc:  "Tinkercad üzerinde Piezo sensörlü Arduino projesi. Belirli bir ritimde kapıya vuruş yapıldığında kilidi açan akıllı kilit sistemi.",
-    tags:  ["Arduino", "C++", "IoT"],
-    image: "https://api.dicebear.com/9.x/bottts/svg?seed=lock&backgroundColor=131a30",
-  },
 ];
 
 /* ─────────────────────────────────────────────
@@ -266,37 +252,9 @@ export default function App() {
           </Card>
         </section>
 
-        {/* ── Projeler ── */}
+        {/* ── Projeler (Lab-5 ile Geliştirilmiş) ── */}
         <section id="projects" className="scroll-mt-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-text mb-6
-                         border-b border-slate-300 dark:border-border-subtle pb-3">
-            Projelerim
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PROJECTS.map((project, idx) => (
-              <Card
-                key={idx}
-                variant="elevated"
-                title={project.title}
-                footer={
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-0.5 rounded-full text-xs font-medium
-                                   bg-primary/10 text-primary-light border border-primary/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                }
-              >
-                {project.desc}
-              </Card>
-            ))}
-          </div>
+          <ProjectsPage />
         </section>
 
         {/* ── İletişim ── */}
