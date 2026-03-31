@@ -1,13 +1,17 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 /* ─── Tip Tanımları ─── */
-type Variant = "primary" | "secondary" | "danger" | "ghost";
+type Variant = "primary" | "secondary" | "danger" | "ghost" | "link";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
   children: ReactNode;
+  href?: string; // Link için opsiyonel
+  target?: string; // External link için
+  rel?: string; // External link için
 }
 
 /* ─── Variant → Tailwind sınıfları ─── */
@@ -38,6 +42,12 @@ const variantMap: Record<Variant, string> = {
     "hover:border-slate-400 dark:hover:border-primary/40 " +
     "focus:ring-2 focus:ring-slate-400/40 dark:focus:ring-primary/40 " +
     "focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-surface",
+
+  link:
+    "bg-transparent text-primary dark:text-primary-light border-none " +
+    "hover:text-primary-dark dark:hover:text-primary " +
+    "focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 " +
+    "focus:ring-offset-white dark:focus:ring-offset-surface",
 };
 
 /* ─── Size → Tailwind sınıfları ─── */
@@ -55,27 +65,49 @@ export default function Button({
   size = "md",
   disabled = false,
   className = "",
+  href,
+  target,
+  rel,
   children,
   ...rest
 }: ButtonProps) {
+  const baseClasses = [
+    /* Temel stiller */
+    "inline-flex items-center justify-center font-semibold",
+    "cursor-pointer select-none",
+    "transition-all duration-200",
+    "focus:outline-none",
+    /* Disabled */
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none",
+    /* Variant & Size */
+    variantMap[variant],
+    sizeMap[size],
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  // LAB-6: Link desteği
+  // External URL (http/https) için a etiketi, internal link'ler için Link bileşeni
+  if (href) {
+    if (href.startsWith("http")) {
+      return (
+        <a href={href} target={target} rel={rel} className={baseClasses}>
+          {children}
+        </a>
+      );
+    }
+    return (
+      <Link to={href} className={baseClasses}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
       disabled={disabled}
-      className={[
-        /* Temel stiller */
-        "inline-flex items-center justify-center font-semibold",
-        "cursor-pointer select-none",
-        "transition-all duration-200",
-        "focus:outline-none",
-        /* Disabled */
-        "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none",
-        /* Variant & Size */
-        variantMap[variant],
-        sizeMap[size],
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
+      className={baseClasses}
       {...rest}
     >
       {children}

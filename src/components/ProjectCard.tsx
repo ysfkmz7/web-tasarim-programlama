@@ -1,4 +1,5 @@
 import type { Project } from '../types/project';
+import { Link } from 'react-router-dom';
 
 interface ProjectCardProps {
   project: Project;
@@ -108,6 +109,20 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           </a>
         </div>
       )}
+
+      {/* LAB-6 RUBRIK: Dinamik Rota (URL Parametreleri) ✅
+          Proje kartından /projects/:id rotasına Link */}
+      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <Link
+          to={`/projects/${project.id}`}
+          className="inline-block px-4 py-2 text-sm font-medium rounded-lg
+                     bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600
+                     transition-colors"
+          aria-label={`${project.title} detaylarını görüntüle`}
+        >
+          Detayları Gör →
+        </Link>
+      </div>
     </article>
   );
 };
